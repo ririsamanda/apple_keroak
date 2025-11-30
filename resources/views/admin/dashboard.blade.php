@@ -41,6 +41,10 @@
 
 <div class="container-fluid p-0">
     
+    <!-- CONTAINER DATA TERSEMBUNYI (Perbaikan untuk Syntax Error @) -->
+    <input type="hidden" id="chartLabelsData" value="{{ json_encode($chartLabels ?? []) }}">
+    <input type="hidden" id="chartDataValues" value="{{ json_encode($chartData ?? []) }}">
+    
     <div class="dashboard-header d-flex justify-content-between align-items-center">
         <div>
             <h2 class="fw-bold mb-1">Selamat Datang, Admin!</h2>
@@ -117,10 +121,15 @@
     document.addEventListener("DOMContentLoaded", function() {
         var ctx = document.getElementById('productionChart').getContext('2d');
         
-        // --- DATA SINKRONISASI (Mengambil dari Controller) ---
-        // Jika data kosong (awal bulan), beri array default agar grafik tidak error
-        var labels = {!! json_encode($chartLabels ?? []) !!};
-        var dataProduksi = {!! json_encode($chartData ?? []) !!};
+        // --- DATA SINKRONISASI (Mengambil data dari Hidden Input) ---
+        // 1. Ambil JSON string dari hidden field
+        var labelsJson = document.getElementById('chartLabelsData').getAttribute('value');
+        var dataJson = document.getElementById('chartDataValues').getAttribute('value');
+
+        // 2. Parse JSON string menjadi array/objek JavaScript
+        // Kita gunakan JSON.parse(string) || [] untuk mencegah error jika string kosong
+        var labels = JSON.parse(labelsJson) || [];
+        var dataProduksi = JSON.parse(dataJson) || [];
 
         // Jika labels kosong, tampilkan placeholder
         if(labels.length === 0) {

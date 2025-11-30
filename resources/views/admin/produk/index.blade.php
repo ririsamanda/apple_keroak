@@ -50,6 +50,25 @@
         display: inline-block;
     }
 
+    /* Badge Stok (Baru) */
+    .badge-stok-aman {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+
+    .badge-stok-nipis {
+        background-color: #ffebee;
+        color: #c62828;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+
     /* Tombol Aksi (Edit/Hapus) */
     .btn-action {
         width: 38px;
@@ -104,9 +123,10 @@
                     <tr>
                         <th class="text-center" width="5%">No</th>
                         <th width="25%">Nama Produk</th>
-                        <th width="20%">Kategori</th>
-                        <th width="15%" class="text-center">Satuan</th>
-                        <th width="20%">Harga (Rp)</th>
+                        <th width="15%">Kategori</th>
+                        <th width="10%" class="text-center">Satuan</th>
+                        <th width="15%">Harga (Rp)</th>
+                        <th width="10%" class="text-center">Stok</th> <!-- Kolom Stok Ditambahkan -->
                         <th width="15%" class="text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -125,7 +145,8 @@
                             </div>
                         </td>
 
-                        <td>{{ $data->Kategori }}</td>
+                        <!-- Menampilkan Kategori (handle nullable) -->
+                        <td>{{ $data->Kategori ?? '-' }}</td>
                         
                         <td class="text-center">
                             <span class="badge-satuan">{{ $data->Satuan }}</span>
@@ -135,7 +156,17 @@
                             <span class="price-tag">Rp {{ number_format($data->Harga, 0, ',', '.') }}</span>
                         </td>
 
+                        <!-- Menampilkan Stok -->
                         <td class="text-center">
+                            @if($data->Stok <= 5)
+                                <span class="badge-stok-nipis">{{ $data->Stok }}</span>
+                            @else
+                                <span class="badge-stok-aman">{{ $data->Stok }}</span>
+                            @endif
+                        </td>
+
+                        <td class="text-center">
+                            <!-- Menggunakan Id_produk sesuai migration -->
                             <a href="{{ route('produk.edit', $data->Id_produk) }}" class="btn-action btn-edit me-1" title="Edit Produk">
                                 <i class="bi bi-pencil-fill"></i>
                             </a>
@@ -151,7 +182,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="6" class="text-center py-5 text-muted">
+                        <td colspan="7" class="text-center py-5 text-muted">
                             <div class="mb-3">
                                 <i class="bi bi-inbox" style="font-size: 3rem; opacity: 0.2;"></i>
                             </div>

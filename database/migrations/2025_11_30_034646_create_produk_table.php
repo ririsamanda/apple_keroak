@@ -17,6 +17,7 @@ return new class extends Migration
         $table->string('Kategori', 100)->nullable(); // Ada di dokumen Word 
         $table->string('Satuan', 50); // pcs, unit, box
         $table->decimal('Harga', 10, 2); // Menggunakan decimal agar presisi uang aman
+        $table->integer('Stok')->default(0);
         $table->timestamps();
     });
     }

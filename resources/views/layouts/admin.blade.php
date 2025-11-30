@@ -12,16 +12,16 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%); /* Background halaman lebih soft */
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* --- 1. SIDEBAR PROFESSIONAL --- */
+        /* --- 1. SIDEBAR PROFESSIONAL (Fixed & Scrollable) --- */
         .sidebar {
             width: 280px;
             background-color: #0f172a; /* Dark Navy Premium */
-            min-height: 100vh;
+            height: 100vh; /* PENTING: Gunakan height fix agar bisa di-scroll */
             position: fixed;
             top: 0;
             left: 0;
@@ -34,12 +34,13 @@
             transition: all 0.3s;
         }
 
-        /* Bagian Profil User (Dipindah ke Sidebar agar lebih keren) */
+        /* Profil User (Fixed di Atas) */
         .sidebar-profile {
             text-align: center;
-            padding: 20px 0 30px 0;
+            padding: 10px 0 20px 0;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            flex-shrink: 0; /* Agar tidak mengecil saat menu di-scroll */
         }
 
         .profile-img {
@@ -58,13 +59,37 @@
             font-size: 0.85rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: #94a3b8; /* Abu-abu soft */
+            color: #94a3b8;
             font-weight: 600;
             margin-bottom: 5px;
         }
 
         .user-name { font-weight: 600; font-size: 1rem; color: #fff; }
         .user-role { font-size: 0.75rem; color: #64748b; background: rgba(255,255,255,0.05); padding: 2px 10px; border-radius: 20px; }
+
+        /* --- AREA MENU SCROLLABLE --- */
+        .sidebar-menu {
+            flex-grow: 1; /* Mengisi sisa ruang kosong */
+            overflow-y: auto; /* Aktifkan scroll vertikal */
+            overflow-x: hidden; /* Sembunyikan scroll horizontal */
+            padding-right: 5px; /* Jarak agar scrollbar tidak nempel */
+            margin-right: -10px; /* Trik agar scrollbar agak ke kanan */
+        }
+
+        /* Custom Scrollbar (Agar terlihat rapi) */
+        .sidebar-menu::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar-menu::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar-menu::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        .sidebar-menu::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
 
         /* Label Kategori Menu */
         .menu-label {
@@ -74,7 +99,7 @@
             font-weight: 700;
             letter-spacing: 0.5px;
             margin-bottom: 10px;
-            margin-top: 10px;
+            margin-top: 15px; /* Tambah jarak antar kategori */
             padding-left: 15px;
         }
 
@@ -82,7 +107,7 @@
         .sidebar-link {
             display: flex;
             align-items: center;
-            color: #cbd5e1; /* Warna teks menu */
+            color: #cbd5e1;
             text-decoration: none;
             padding: 13px 20px;
             margin-bottom: 8px;
@@ -105,18 +130,21 @@
             transform: translateX(5px);
         }
 
-        /* ACTIVE STATE (Putih Pop-Out) */
+        /* ACTIVE STATE */
         .sidebar-link.active {
             background-color: #ffffff;
-            color: #0f172a; /* Teks jadi gelap */
+            color: #0f172a;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             font-weight: 600;
         }
-        
         .sidebar-link.active i { color: #0f172a; }
 
-        /* Tombol Logout */
-        .logout-container { margin-top: auto; }
+        /* Tombol Logout (Fixed di Bawah) */
+        .logout-container { 
+            margin-top: auto; 
+            padding-top: 20px;
+            flex-shrink: 0; /* Agar tidak ikut mengecil/hilang */
+        }
         
         .btn-logout-custom {
             background-color: rgba(239, 68, 68, 0.1);
@@ -161,6 +189,7 @@
 
     <div class="sidebar">
         
+        <!-- 1. Profil (Fixed) -->
         <div class="sidebar-profile">
             <div class="brand-text mb-3"><i class="bi bi-apple me-1"></i> APPLE KEROAK</div>
             
@@ -171,9 +200,10 @@
             <span class="user-role">Administrator</span>
         </div>
         
-        <div class="d-flex flex-column flex-grow-1">
+        <!-- 2. Menu List (Scrollable) -->
+        <div class="sidebar-menu">
             
-            <div class="menu-label">Overview</div>
+            <div class="menu-label" style="margin-top: 0;">Overview</div>
             
             <a href="/admin/dashboard" class="sidebar-link {{ Request::is('admin/dashboard') ? 'active' : '' }}">
                 <i class="bi bi-grid-fill"></i>
@@ -204,8 +234,16 @@
                 <span>Laporan</span>
             </a>
 
+            <!-- Contoh Menu Tambahan untuk Test Scroll (Opsional) -->
+            <!-- 
+            <div class="menu-label">Settings</div>
+            <a href="#" class="sidebar-link"><i class="bi bi-gear-fill"></i> <span>Konfigurasi</span></a>
+            <a href="#" class="sidebar-link"><i class="bi bi-shield-lock-fill"></i> <span>Keamanan</span></a>
+            -->
+
         </div>
         
+        <!-- 3. Logout (Fixed) -->
         <div class="logout-container">
             <form action="/logout" method="post">
                 @csrf
@@ -216,6 +254,7 @@
         </div>
     </div>
 
+    <!-- MAIN CONTENT -->
     <div class="main-wrapper">
         
         <div class="top-header">

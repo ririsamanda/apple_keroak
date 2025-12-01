@@ -132,7 +132,7 @@ class DatabaseSeeder extends Seeder
                 'Kategori'    => 'Audio',
                 'Satuan'      => 'Pcs',
                 'Harga'       => 28000000,
-                'Stok'        => 200,        // <-- Stok sudah masuk
+                'Stok'        => 100,        // <-- Stok sudah masuk
                 'created_at'  => now(),
                 'updated_at'  => now(),
             ]

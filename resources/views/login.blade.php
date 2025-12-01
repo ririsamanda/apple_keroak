@@ -173,7 +173,7 @@
                 <label for="password" class="form-label">Password</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                    <input type="password" name="Password" class="form-control" id="password" placeholder="••••••••" required>
+                    <input type="password" name="Password" class="form-control" id="password" placeholder="Masukkan password Anda" required>
                 </div>
             </div>
 

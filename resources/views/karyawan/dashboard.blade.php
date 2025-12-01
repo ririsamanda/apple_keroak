@@ -129,6 +129,21 @@
         color: white;
         box-shadow: 0 4px 15px rgba(30, 58, 86, 0.3);
     }
+
+    /* 5. KELAS STATUS BARU (FIXED FOR PARSING ERROR) */
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .status-Dikirim { background-color: var(--status-info-bg); color: var(--status-info-text); }
+    .status-Selesai { background-color: var(--status-success-bg); color: var(--status-success-text); }
+    .status-Batal { background-color: var(--status-danger-bg); color: var(--status-danger-text); }
+    .status-default { background-color: var(--status-neutral-bg); color: var(--status-neutral-text); }
 </style>
 
 <div class="container-fluid p-0">
@@ -261,16 +276,19 @@
                                     <td class="text-center">
                                         @php
                                             $status = $rk->Status_pengiriman;
-                                            $style = match($status) {
-                                                'Selesai' => ['bg' => 'var(--status-success-bg)', 'text' => 'var(--status-success-text)', 'icon' => 'bi-check-circle-fill'],
-                                                'Proses'  => ['bg' => 'var(--status-info-bg)', 'text' => 'var(--status-info-text)', 'icon' => 'bi-arrow-repeat'],
-                                                'Batal'   => ['bg' => 'var(--status-danger-bg)', 'text' => 'var(--status-danger-text)', 'icon' => 'bi-x-circle-fill'],
-                                                default   => ['bg' => 'var(--status-neutral-bg)', 'text' => 'var(--status-neutral-text)', 'icon' => 'bi-circle'],
+                                            
+                                            // Menentukan kelas dan ikon berdasarkan status
+                                            $class = match($status) {
+                                                'Selesai' => 'status-Selesai bi-check-circle-fill',
+                                                'Dikirim' => 'status-Dikirim bi-truck-fill',
+                                                'Batal'   => 'status-Batal bi-x-circle-fill',
+                                                default   => 'status-default bi-circle',
                                             };
+                                            // Memecah kelas dan ikon. Ini harus aman karena match() selalu mengembalikan string.
+                                            list($statusClass, $iconClass) = explode(' ', $class);
                                         @endphp
-                                        <span class="badge rounded-pill border-0 d-inline-flex align-items-center fw-normal" 
-                                            style="background-color: {{ $style['bg'] }}; color: {{ $style['text'] }}; padding: 6px 12px;">
-                                            <i class="bi {{ $style['icon'] }} me-1" style="font-size: 0.75rem;"></i>
+                                        <span class="badge rounded-pill border-0 d-inline-flex align-items-center fw-normal status-badge {{ $statusClass }}">
+                                            <i class="bi {{ $iconClass }} me-1" style="font-size: 0.75rem;"></i>
                                             {{ $status }}
                                         </span>
                                     </td>

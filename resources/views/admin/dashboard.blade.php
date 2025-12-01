@@ -182,7 +182,7 @@
                     y: {
                         beginAtZero: true,
                         min: 0,        // Mulai dari 0
-                        max: 1000,     // Maksimal di 1000
+                        max: 1500,     // Maksimal di 1000
                         grid: { borderDash: [2, 4], color: '#f0f0f0' },
                         ticks: { stepSize: 50 } // Kelipatan 50 (0, 50, 100, dst)
                     },

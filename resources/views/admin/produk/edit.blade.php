@@ -108,7 +108,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <label class="form-label">Kategori</label>
-                                <input type="text" name="Kategori" class="form-control" value="{{ old('Kategori', $produk->Kategori) }}" placeholder="Contoh: Elektronik" required>
+                                <input type="text" name="Kategori" class="form-control" value="{{ old('Kategori', $produk->Kategori) }}" placeholder="Contoh: Laptop" required>
                             </div>
 
                             <div class="col-md-6 mb-4">
@@ -116,9 +116,6 @@
                                 <select name="Satuan" class="form-select" required>
                                     <option value="Pcs" {{ $produk->Satuan == 'Pcs' ? 'selected' : '' }}>Pcs</option>
                                     <option value="Unit" {{ $produk->Satuan == 'Unit' ? 'selected' : '' }}>Unit</option>
-                                    <option value="Box" {{ $produk->Satuan == 'Box' ? 'selected' : '' }}>Box</option>
-                                    <option value="Sak" {{ $produk->Satuan == 'Sak' ? 'selected' : '' }}>Sak</option>
-                                    <option value="Kg" {{ $produk->Satuan == 'Kg' ? 'selected' : '' }}>Kg</option>
                                 </select>
                             </div>
                         </div>

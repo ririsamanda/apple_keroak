@@ -75,6 +75,8 @@ Route::middleware('auth')->group(function () {
     // --- ROUTE PENGIRIMAN ---
     Route::get('/karyawan/input-pengiriman', [App\Http\Controllers\PengirimanController::class, 'create'])->name('pengiriman.create');
     Route::post('/karyawan/simpan-pengiriman', [App\Http\Controllers\PengirimanController::class, 'store'])->name('pengiriman.store');
+    // Route Update Status Selesai (Khusus Karyawan)
+    Route::put('/karyawan/pengiriman/{id}/selesai', [App\Http\Controllers\PengirimanController::class, 'selesaikan'])->name('pengiriman.selesai');
 
     // --- ROUTE LAPORAN ---
     Route::get('/admin/laporan', [App\Http\Controllers\LaporanController::class, 'index'])->name('laporan.index');

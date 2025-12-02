@@ -97,7 +97,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <label class="form-label">Nama Pelanggan</label>
-                                <input type="text" name="Nama_pelanggan" class="form-control" value="{{ old('Nama_pelanggan') }}" placeholder="Nama lengkap customer" required autofocus>
+                                <input type="text" name="Nama_pelanggan" class="form-control" value="{{ old('Nama_pelanggan') }}" placeholder="Masukkan nama pelanggan" required autofocus>
                             </div>
 
                             <div class="col-md-6 mb-4">
@@ -112,7 +112,7 @@
 
                         <div class="mb-4">
                             <label class="form-label">Alamat Lengkap</label>
-                            <textarea name="Alamat" class="form-control" rows="4" placeholder="Jalan, RT/RW, Kecamatan..." required>{{ old('Alamat') }}</textarea>
+                            <textarea name="Alamat" class="form-control" rows="4" placeholder="Masukkan alamat pelanggan" required>{{ old('Alamat') }}</textarea>
                         </div>
 
                         <div class="d-flex justify-content-between align-items-center mt-4 pt-2">

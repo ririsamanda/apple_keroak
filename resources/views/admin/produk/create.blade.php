@@ -108,13 +108,13 @@
                         
                         <div class="mb-4">
                             <label class="form-label">Nama Produk</label>
-                            <input type="text" name="Nama_produk" class="form-control" value="{{ old('Nama_produk') }}" placeholder="Contoh: Semen Gresik 40kg" required autofocus>
+                            <input type="text" name="Nama_produk" class="form-control" value="{{ old('Nama_produk') }}" placeholder="Masukkan Nama Produk" required autofocus>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <label class="form-label">Kategori</label>
-                                <input type="text" name="Kategori" class="form-control" value="{{ old('Kategori') }}" placeholder="Contoh: Bahan Bangunan" required>
+                                <input type="text" name="Kategori" class="form-control" value="{{ old('Kategori') }}" placeholder="Contoh: Laptop" required>
                             </div>
 
                             <div class="col-md-6 mb-4">
@@ -123,9 +123,6 @@
                                     <option value="">-- Pilih Satuan --</option>
                                     <option value="Pcs" {{ old('Satuan') == 'Pcs' ? 'selected' : '' }}>Pcs</option>
                                     <option value="Unit" {{ old('Satuan') == 'Unit' ? 'selected' : '' }}>Unit</option>
-                                    <option value="Box" {{ old('Satuan') == 'Box' ? 'selected' : '' }}>Box</option>
-                                    <option value="Sak" {{ old('Satuan') == 'Sak' ? 'selected' : '' }}>Sak</option>
-                                    <option value="Kg" {{ old('Satuan') == 'Kg' ? 'selected' : '' }}>Kg</option>
                                 </select>
                             </div>
                         </div>

@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // ==========================================
-        // 1. ISI TABEL HAK AKSES (Paten)
+        // 1. ISI TABEL HAK AKSES 
         // ==========================================
         DB::table('hak_akses')->updateOrInsert(
             ['Id_hakakses' => 1],
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
         
-        // --- DATA 2: Riris Amanda (Admin) ---
+        // --- DATA 2: aulia (Admin) ---
         DB::table('karyawan')->updateOrInsert(
             ['Username' => 'aulia'], 
             [
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             [
                 'Nama_karyawan' => 'Joko Santoso',
                 'Password'      => Hash::make('password'),
-                'Id_hakakses'   => 1, // Admin (Level Supervisor)
+                'Id_hakakses'   => 1, // Admin
                 'Jabatan'       => 'Supervisor Logistik',
                 'created_at'    => now(),
                 'updated_at'    => now(),
@@ -96,7 +96,7 @@ class DatabaseSeeder extends Seeder
         // 3. ISI TABEL PRODUK (LENGKAP DENGAN STOK)
         // ==========================================
         
-        // Produk 1: Laptop (Stok 5)
+        // Produk 1: phone x
         DB::table('produk')->updateOrInsert(
             ['Id_produk' => 1], 
             [
@@ -104,13 +104,13 @@ class DatabaseSeeder extends Seeder
                 'Kategori'    => 'Smartphone',
                 'Satuan'      => 'Unit',
                 'Harga'       => 45000000,
-                'Stok'        => 100,         // <-- Stok sudah masuk
+                'Stok'        => 100,         
                 'created_at'  => now(),
                 'updated_at'  => now(),
             ]
         );
 
-        // Produk 2: Laptop Gaming (Stok 5)
+        // Produk 2: Laptop
         DB::table('produk')->updateOrInsert(
             ['Id_produk' => 2], 
             [
@@ -118,13 +118,13 @@ class DatabaseSeeder extends Seeder
                 'Kategori'    => 'Laptop',
                 'Satuan'      => 'Unit',
                 'Harga'       => 65000000,
-                'Stok'        => 50,        // <-- Stok sudah masuk
+                'Stok'        => 50,        
                 'created_at'  => now(),
                 'updated_at'  => now(),
             ]
         );
 
-        // Produk 3: Laptop Bisnis
+        // Produk 3: air head
         DB::table('produk')->updateOrInsert(
             ['Id_produk' => 3], 
             [
@@ -132,13 +132,13 @@ class DatabaseSeeder extends Seeder
                 'Kategori'    => 'Audio',
                 'Satuan'      => 'Pcs',
                 'Harga'       => 28000000,
-                'Stok'        => 100,        // <-- Stok sudah masuk
+                'Stok'        => 100,        
                 'created_at'  => now(),
                 'updated_at'  => now(),
             ]
         );
 
-        // Produk 4: Aksesoris Mouse (Stok 50)
+        // Produk 4: watch pro
         DB::table('produk')->updateOrInsert(
             ['Id_produk' => 4], 
             [
@@ -146,13 +146,13 @@ class DatabaseSeeder extends Seeder
                 'Kategori'    => 'Wearable',
                 'Satuan'      => 'Pcs',
                 'Harga'       => 1500000,
-                'Stok'        => 150,        // <-- Stok sudah masuk
+                'Stok'        => 150,       
                 'created_at'  => now(),
                 'updated_at'  => now(),
             ]
         );
 
-        // Produk 5: Monitor (Stok 100)
+        // Produk 5: tablet
         DB::table('produk')->updateOrInsert(
             ['Id_produk' => 5], 
             [
@@ -160,7 +160,7 @@ class DatabaseSeeder extends Seeder
                 'Kategori'    => 'Tablet',
                 'Satuan'      => 'Unit',
                 'Harga'       => 14000000,
-                'Stok'        => 100,       // <-- Stok sudah masuk
+                'Stok'        => 100,    
                 'created_at'  => now(),
                 'updated_at'  => now(),
             ]
@@ -171,7 +171,7 @@ class DatabaseSeeder extends Seeder
         // ==========================================
         // Acuan: Id_pelanggan
         
-        // Pelanggan 1 (Toko)
+        // Pelanggan 1 
         DB::table('pelanggan')->updateOrInsert(
             ['Id_pelanggan' => 1], 
             [
@@ -183,7 +183,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Pelanggan 2 (CV)
+        // Pelanggan 2 
         DB::table('pelanggan')->updateOrInsert(
             ['Id_pelanggan' => 2], 
             [
@@ -195,7 +195,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Pelanggan 3 (Perorangan)
+        // Pelanggan 3 
         DB::table('pelanggan')->updateOrInsert(
             ['Id_pelanggan' => 3], 
             [
@@ -207,7 +207,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Pelanggan 4 (PT)
+        // Pelanggan 4 
         DB::table('pelanggan')->updateOrInsert(
             ['Id_pelanggan' => 4], 
             [
@@ -219,7 +219,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Pelanggan 5 (Perorangan)
+        // Pelanggan 5 
         DB::table('pelanggan')->updateOrInsert(
             ['Id_pelanggan' => 5], 
             [
@@ -234,7 +234,6 @@ class DatabaseSeeder extends Seeder
         // ==========================================
         // 4. PRODUKSI / QC (Quality Control Barang Masuk)
         // ==========================================
-        // Di konteks toko, "Produksi" bisa dianggap sebagai "Setup/QC Laptop Baru"
         
         DB::table('produksi')->updateOrInsert(
             ['Id_produksi' => 1],
@@ -264,7 +263,6 @@ class DatabaseSeeder extends Seeder
         // 5. PENGIRIMAN (DISTRIBUSI KE KLIEN)
         // ==========================================
 
-        // Kirim ke Kantor Startup (Bulk Order)
         DB::table('pengiriman')->updateOrInsert(
             ['Id_pengiriman' => 1],
             [
@@ -276,11 +274,10 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Kirim ke Reseller Mangga Dua
         DB::table('pengiriman')->updateOrInsert(
             ['Id_pengiriman' => 2],
             [
-                'Id_pelanggan'      => 3, // CV. Solusi Digital
+                'Id_pelanggan'      => 3, 
                 'Tanggal_kirim'     => '2025-11-12',
                 'Id_karyawan'       => 3,
                 'Status_pengiriman' => 'Selesai',
@@ -292,7 +289,6 @@ class DatabaseSeeder extends Seeder
         // 6. DETAIL PENGIRIMAN
         // ==========================================
 
-        // Detail Order PT Startup (Beli Laptop Kerja)
         DB::table('detail_pengiriman')->updateOrInsert(
             ['Id_detail' => 1],
             [
@@ -315,13 +311,12 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Detail Order Reseller (Restock Aksesoris)
         DB::table('detail_pengiriman')->updateOrInsert(
             ['Id_detail' => 3],
             [
                 'Id_pengiriman' => 2,
-                'Id_produk'     => 4, // Mouse Apple
-                'Jumlah_kirim'  => 50, // Borong 20 pcs
+                'Id_produk'     => 4, 
+                'Jumlah_kirim'  => 50, 
                 'keterangan'    => 'Pengiriman via kurir express',
                 'created_at'    => now(), 'updated_at' => now(),
             ]

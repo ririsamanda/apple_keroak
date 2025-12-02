@@ -63,6 +63,23 @@ class PengirimanController extends Controller
             }
         });
 
+        // Redirect dilakukan SETELAH transaksi selesai
         return redirect()->route('karyawan.dashboard')->with('success', 'Pengiriman berhasil diproses!');
+    }
+
+    // 3. Fungsi Selesaikan Pengiriman (Update Status)
+    public function selesaikan($id)
+    {
+        // Cari data pengiriman berdasarkan ID
+        // Dan pastikan yang mengubah adalah karyawan pemilik data itu sendiri (Keamanan)
+        $pengiriman = Pengiriman::where('Id_pengiriman', $id)
+                                ->where('Id_karyawan', Auth::id()) 
+                                ->firstOrFail();
+
+        // Ubah status jadi Selesai
+        $pengiriman->Status_pengiriman = 'Selesai';
+        $pengiriman->save();
+
+        return back()->with('success', 'Status pengiriman berhasil diubah menjadi Selesai!');
     }
 }

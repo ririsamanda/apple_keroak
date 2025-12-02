@@ -202,7 +202,7 @@
                 {{-- Isi Tabel --}}
                 <div class="card-body p-0 flex-grow-1">
                     <div class="table-responsive">
-                        <table class="table table-modern mb-0">
+                        <table class="table table-stripped mb-0">
                             <thead>
                                 <tr>
                                     <th>Tanggal</th>
@@ -260,45 +260,41 @@
                 {{-- Isi Tabel --}}
                 <div class="card-body p-0 flex-grow-1">
                     <div class="table-responsive">
-                        <table class="table table-modern mb-0">
-                            <thead>
+                         <table class="table table-striped mb-0">
+                            <thead class="table-light">
                                 <tr>
                                     <th>Tanggal</th>
                                     <th>Tujuan</th>
-                                    <th class="text-center">Status</th>
-                                </tr>
+                                    <th>Status & Aksi</th> </tr>
                             </thead>
                             <tbody>
                                 @forelse($riwayatPengiriman as $rk)
                                 <tr>
-                                    <td class="text-nowrap">{{ $rk->Tanggal_kirim }}</td>
-                                    <td class="fw-semibold text-dark">{{ $rk->pelanggan->Nama_pelanggan }}</td>
-                                    <td class="text-center">
-                                        @php
-                                            $status = $rk->Status_pengiriman;
-                                            
-                                            // Menentukan kelas dan ikon berdasarkan status
-                                            $class = match($status) {
-                                                'Selesai' => 'status-Selesai bi-check-circle-fill',
-                                                'Dikirim' => 'status-Dikirim bi-truck-fill',
-                                                'Batal'   => 'status-Batal bi-x-circle-fill',
-                                                default   => 'status-default bi-circle',
-                                            };
-                                            // Memecah kelas dan ikon. Ini harus aman karena match() selalu mengembalikan string.
-                                            list($statusClass, $iconClass) = explode(' ', $class);
-                                        @endphp
-                                        <span class="badge rounded-pill border-0 d-inline-flex align-items-center fw-normal status-badge {{ $statusClass }}">
-                                            <i class="bi {{ $iconClass }} me-1" style="font-size: 0.75rem;"></i>
-                                            {{ $status }}
-                                        </span>
+                                    <td class="align-middle">{{ $rk->Tanggal_kirim }}</td>
+                                    <td class="align-middle">{{ $rk->pelanggan->Nama_pelanggan }}</td>
+                                    <td class="align-middle">
+                                        
+                                        @if($rk->Status_pengiriman == 'Dikirim')
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="badge bg-warning text-dark">Dikirim</span>
+                                                
+                                                <form action="{{ route('pengiriman.selesai', $rk->Id_pengiriman) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="submit" class="btn btn-xs btn-success py-0 px-2" style="font-size: 0.75rem;" title="Tandai Sudah Sampai">
+                                                        <i class="bi bi-check-lg"></i> Selesai?
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        @else
+                                            <span class="badge bg-success">Selesai</span>
+                                        @endif
+
                                     </td>
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="3" class="text-center py-5 text-muted">
-                                        <i class="bi bi-truck fs-1 opacity-25 d-block mb-2"></i>
-                                        Belum ada data pengiriman.
-                                    </td>
+                                    <td colspan="3" class="text-center text-muted py-3">Belum ada data pengiriman.</td>
                                 </tr>
                                 @endforelse
                             </tbody>

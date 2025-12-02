@@ -20,7 +20,7 @@
         /* --- 1. SIDEBAR UTAMA (Flex Container) --- */
         .sidebar {
             width: 280px;
-            background-color: #1e3a56; /* Warna Navy Utama */
+            background-color: #0f172a; /* Warna Navy Utama */
             height: 100vh; /* PENTING: Tinggi fix 100% layar agar bisa scroll */
             position: fixed;
             top: 0;

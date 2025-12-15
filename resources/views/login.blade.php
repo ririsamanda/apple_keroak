@@ -11,7 +11,6 @@
     
     <style>
         body {
-            /* Background Modern: Soft Grayish Blue */
             background-color: #f0f4f8;
             background-image: radial-gradient(#d1d5db 1px, transparent 1px);
             background-size: 20px 20px;
@@ -24,8 +23,8 @@
 
         .login-card {
             border: none;
-            border-radius: 24px; /* Lebih bulat */
-            box-shadow: 0 20px 50px rgba(30, 58, 86, 0.15); /* Shadow Premium */
+            border-radius: 24px; 
+            box-shadow: 0 20px 50px rgba(30, 58, 86, 0.15); 
             overflow: hidden;
             width: 100%;
             max-width: 420px;
@@ -33,13 +32,12 @@
             position: relative;
         }
 
-        /* Hiasan Header (Garis Navy di atas) */
         .login-card::before {
             content: "";
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 6px;
-            background: #1e3a56; /* Warna Navy Utama */
+            background: #1e3a56; 
         }
 
         .header-section {
@@ -69,7 +67,6 @@
             font-size: 0.9rem;
         }
 
-        /* Input Group Modern */
         .input-group-text {
             background-color: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -95,7 +92,6 @@
             box-shadow: none;
         }
         
-        /* Saat input fokus, icon juga berubah warna border */
         .form-control:focus + .input-group-text, 
         .input-group:focus-within .input-group-text {
             background-color: #fff;

@@ -4,7 +4,6 @@
 
 @section('content')
 <style>
-    /* Styling Form Modern */
     .card-form {
         border: none;
         border-radius: 15px;

@@ -41,7 +41,6 @@
 
 <div class="container-fluid p-0">
     
-    <!-- CONTAINER DATA TERSEMBUNYI (Perbaikan untuk Syntax Error @) -->
     <input type="hidden" id="chartLabelsData" value="{{ json_encode($chartLabels ?? []) }}">
     <input type="hidden" id="chartDataValues" value="{{ json_encode($chartData ?? []) }}">
     
@@ -57,7 +56,6 @@
     </div>
 
     <div class="row g-4 mb-4">
-        <!-- Card 1 -->
         <div class="col-12 col-md-4">
             <div class="card-modern p-4 h-100">
                 <div class="d-flex justify-content-between align-items-start">
@@ -72,7 +70,7 @@
                 </div>
             </div>
         </div>
-        <!-- Card 2 -->
+
         <div class="col-12 col-md-4">
             <div class="card-modern p-4 h-100">
                 <div class="d-flex justify-content-between align-items-start">
@@ -87,7 +85,7 @@
                 </div>
             </div>
         </div>
-        <!-- Card 3 -->
+        
         <div class="col-12 col-md-4">
             <div class="card-modern p-4 h-100">
                 <div class="d-flex justify-content-between align-items-start">
@@ -102,7 +100,6 @@
         </div>
     </div>
 
-    <!-- Grafik Section -->
     <div class="row">
         <div class="col-12"> 
             <div class="card-modern p-4">
@@ -121,17 +118,12 @@
     document.addEventListener("DOMContentLoaded", function() {
         var ctx = document.getElementById('productionChart').getContext('2d');
         
-        // --- DATA SINKRONISASI (Mengambil data dari Hidden Input) ---
-        // 1. Ambil JSON string dari hidden field
         var labelsJson = document.getElementById('chartLabelsData').getAttribute('value');
         var dataJson = document.getElementById('chartDataValues').getAttribute('value');
 
-        // 2. Parse JSON string menjadi array/objek JavaScript
-        // Kita gunakan JSON.parse(string) || [] untuk mencegah error jika string kosong
         var labels = JSON.parse(labelsJson) || [];
         var dataProduksi = JSON.parse(dataJson) || [];
 
-        // Jika labels kosong, tampilkan placeholder
         if(labels.length === 0) {
             labels = ['Data Kosong'];
             dataProduksi = [0];
@@ -144,10 +136,10 @@
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: labels, // Label Bulan dari DB
+                labels: labels, 
                 datasets: [{
                     label: 'Jumlah Produksi',
-                    data: dataProduksi, // Data Angka dari DB
+                    data: dataProduksi, 
                     backgroundColor: gradient,
                     borderColor: '#1e3a56',
                     borderWidth: 2,
@@ -181,10 +173,10 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        min: 0,        // Mulai dari 0
-                        max: 1500,     // Maksimal di 1000
+                        min: 0,       
+                        max: 1500,     
                         grid: { borderDash: [2, 4], color: '#f0f0f0' },
-                        ticks: { stepSize: 50 } // Kelipatan 50 (0, 50, 100, dst)
+                        ticks: { stepSize: 50 } 
                     },
                     x: {
                         grid: { display: false }

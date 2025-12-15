@@ -17,30 +17,28 @@
             min-height: 100vh;
         }
 
-        /* --- 1. SIDEBAR UTAMA (Flex Container) --- */
         .sidebar {
             width: 280px;
-            background-color: #0f172a; /* Warna Navy Utama */
-            height: 100vh; /* PENTING: Tinggi fix 100% layar agar bisa scroll */
+            background-color: #0f172a; 
+            height: 100vh; 
             position: fixed;
             top: 0;
             left: 0;
             z-index: 100;
             display: flex;
-            flex-direction: column; /* Susunan vertikal */
+            flex-direction: column; 
             box-shadow: 5px 0 15px rgba(0,0,0,0.05);
             padding: 20px;
             color: #fff;
             transition: all 0.3s;
         }
 
-        /* --- 2. PROFIL (Fixed di Atas) --- */
         .sidebar-profile {
             text-align: center;
             padding: 10px 0 20px 0;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             margin-bottom: 15px;
-            flex-shrink: 0; /* Jangan mengecil saat menu discroll */
+            flex-shrink: 0; 
         }
 
         .profile-img {
@@ -72,22 +70,19 @@
             border-radius: 20px; 
         }
 
-        /* --- 3. MENU AREA (Bisa di Scroll) --- */
         .sidebar-menu-area {
-            flex-grow: 1; /* Mengisi ruang kosong tersisa */
-            overflow-y: auto; /* Aktifkan scroll vertikal */
+            flex-grow: 1; 
+            overflow-y: auto; 
             overflow-x: hidden;
-            margin-right: -10px; /* Trik menyembunyikan scrollbar default */
+            margin-right: -10px; 
             padding-right: 10px; 
         }
 
-        /* Custom Scrollbar (Tipis & Elegan) */
         .sidebar-menu-area::-webkit-scrollbar { width: 4px; }
         .sidebar-menu-area::-webkit-scrollbar-track { background: transparent; }
         .sidebar-menu-area::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
         .sidebar-menu-area::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.4); }
 
-        /* Label Menu */
         .menu-label {
             font-size: 0.7rem;
             text-transform: uppercase;
@@ -99,7 +94,6 @@
             padding-left: 15px;
         }
 
-        /* Link Menu */
         .sidebar-link {
             display: flex;
             align-items: center;
@@ -126,7 +120,6 @@
             transform: translateX(5px);
         }
 
-        /* State Active */
         .sidebar-link.active {
             background-color: #ffffff;
             color: #1e3a56; 
@@ -135,11 +128,10 @@
         }
         .sidebar-link.active i { color: #1e3a56; }
 
-        /* --- 4. LOGOUT (Fixed di Bawah) --- */
         .logout-container { 
             margin-top: auto; 
             padding-top: 20px;
-            flex-shrink: 0; /* Agar tidak ikut terscroll/hilang */
+            flex-shrink: 0; 
         }
         
         .btn-logout-custom {
@@ -158,7 +150,6 @@
             box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
         }
 
-        /* --- MAIN CONTENT --- */
         .main-wrapper {
             margin-left: 280px;
             padding: 30px;
@@ -182,54 +173,33 @@
     </style>
 </head>
 <body>
-
     <div class="sidebar">
-        
-        <!-- 1. Profil (Tetap di Atas) -->
         <div class="sidebar-profile">
             <div class="brand-text mb-3"><i class="bi bi-apple me-1"></i> APPLE KEROAK</div>
-            
             <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->Nama_karyawan) }}&background=334155&color=fff&size=128" 
                  class="profile-img" alt="User">
-            
             <div class="user-name">{{ Auth::user()->Nama_karyawan }}</div>
             <span class="user-role">{{ Auth::user()->Jabatan }}</span>
         </div>
         
-        <!-- 2. Menu Navigasi (Area Scrollable) -->
         <div class="sidebar-menu-area">
-            
             <div class="menu-label">Overview</div>
-            
             <a href="/karyawan/dashboard" class="sidebar-link {{ Request::is('karyawan/dashboard') ? 'active' : '' }}">
                 <i class="bi bi-speedometer2"></i>
                 <span>Dashboard</span>
             </a>
-
             <div class="menu-label">Produksi</div>
-
             <a href="{{ route('produksi.create') }}" class="sidebar-link {{ Request::is('karyawan/produksi*') ? 'active' : '' }}">
                 <i class="bi bi-box-seam"></i>
                 <span>Input Produksi</span>
             </a>
-
             <div class="menu-label">Logistik</div>
-
             <a href="{{ route('pengiriman.create') }}" class="sidebar-link {{ Request::is('karyawan/pengiriman*') ? 'active' : '' }}">
                 <i class="bi bi-truck"></i>
                 <span>Input Pengiriman</span>
             </a>
-
-            <!-- Kamu bisa menambahkan menu lain di sini untuk tes scroll -->
-            <!-- Contoh:
-            <div class="menu-label">Lainnya</div>
-            <a href="#" class="sidebar-link"><i class="bi bi-gear"></i> <span>Pengaturan</span></a>
-            <a href="#" class="sidebar-link"><i class="bi bi-person"></i> <span>Profil</span></a>
-            -->
-
         </div>
         
-        <!-- 3. Logout (Tetap di Bawah) -->
         <div class="logout-container">
             <form action="/logout" method="post">
                 @csrf
@@ -240,10 +210,7 @@
         </div>
     </div>
 
-    <!-- KONTEN UTAMA -->
     <div class="main-wrapper">
-        
-        <!-- Header Halaman -->
         <div class="top-header">
             <div>
                 <div class="page-heading">
@@ -257,9 +224,7 @@
             </div>
         </div>
 
-        <!-- Isi Halaman -->
         @yield('content')
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -9,14 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class ProduksiController extends Controller
 {
-    // 1. Tampilkan Form Input Produksi
     public function create()
     {
-        $produk = Produk::all(); // Ambil semua data produk untuk dropdown
+        $produk = Produk::all(); 
         return view('karyawan.produksi.create', compact('produk'));
     }
 
-    // 2. Simpan Data Produksi
     public function store(Request $request)
     {
         $request->validate([
@@ -26,12 +24,11 @@ class ProduksiController extends Controller
             'keterangan'       => 'nullable|string'
         ]);
 
-        // Simpan data
         Produksi::create([
             'Id_produk'        => $request->Id_produk,
             'Jumlah_selesai'   => $request->Jumlah_selesai,
             'Tanggal_produksi' => $request->Tanggal_produksi,
-            'Id_karyawan'      => Auth::id(), // Otomatis ambil ID karyawan yang sedang login
+            'Id_karyawan'      => Auth::id(), 
             'keterangan'       => $request->keterangan
         ]);
 

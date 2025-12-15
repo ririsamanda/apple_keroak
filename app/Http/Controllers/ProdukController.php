@@ -7,20 +7,17 @@ use App\Models\Produk;
 
 class ProdukController extends Controller
 {
-    // 1. Tampilkan Semua Produk
     public function index()
     {
         $produk = Produk::latest('Id_produk')->get();
         return view('admin.produk.index', compact('produk'));
     }
 
-    // 2. Form Tambah
     public function create()
     {
         return view('admin.produk.create');
     }
 
-    // 3. Simpan Data
     public function store(Request $request)
     {
         $request->validate([
@@ -35,14 +32,12 @@ class ProdukController extends Controller
         return redirect()->route('produk.index')->with('success', 'Produk berhasil ditambahkan!');
     }
 
-    // 4. Form Edit
     public function edit($id)
     {
         $produk = Produk::findOrFail($id);
         return view('admin.produk.edit', compact('produk'));
     }
 
-    // 5. Update Data
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -58,7 +53,6 @@ class ProdukController extends Controller
         return redirect()->route('produk.index')->with('success', 'Produk berhasil diperbarui!');
     }
 
-    // 6. Hapus Data
     public function destroy($id)
     {
         $produk = Produk::findOrFail($id);

@@ -64,13 +64,6 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Karyawan::class, // Benar, arahkan ke Karyawan
         ],
-
-    
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

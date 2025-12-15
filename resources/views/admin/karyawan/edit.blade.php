@@ -4,7 +4,6 @@
 
 @section('content')
 <style>
-    /* Menggunakan Style yang sama dengan Create agar Konsisten */
     .card-form {
         border: none;
         border-radius: 15px;
@@ -35,7 +34,7 @@
     }
 
     .btn-save {
-        background-color: #f9a825; /* Warna Kuning/Orange khusus Edit */
+        background-color: #f9a825; 
         color: white;
         padding: 12px 30px;
         border-radius: 10px;

@@ -4,7 +4,6 @@
 
 @section('content')
 <style>
-    /* Styling Form Modern (Konsisten) */
     .card-form {
         border: none;
         border-radius: 15px;
@@ -35,7 +34,7 @@
     }
 
     .btn-save {
-        background-color: #1e3a56; /* Warna Navy (Create Mode) */
+        background-color: #1e3a56; 
         color: white;
         padding: 12px 30px;
         border-radius: 10px;

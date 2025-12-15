@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class DetailPengiriman extends Model
 {
     use HasFactory;
-    protected $table = 'detail_pengiriman'; // Nama tabel
-    protected $primaryKey = 'Id_detail';    // PK
+    protected $table = 'detail_pengiriman'; 
+    protected $primaryKey = 'Id_detail';    
     protected $fillable = ['Id_pengiriman', 'Id_produk', 'Jumlah_kirim', 'keterangan'];
 }

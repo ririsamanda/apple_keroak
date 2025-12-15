@@ -4,7 +4,6 @@
 
 @section('content')
 <style>
-    /* --- CSS Konsisten dengan Halaman Lain --- */
     
     .card-table {
         border: none;
@@ -12,7 +11,7 @@
         box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         background-color: #fff;
         overflow: hidden;
-        margin-bottom: 40px; /* Jarak antar tabel */
+        margin-bottom: 40px; 
     }
 
     .section-header {
@@ -31,7 +30,6 @@
         align-items: center;
     }
 
-    /* Tabel Modern */
     .table-modern thead th {
         background-color: #f8f9fa;
         color: #7b8ca0;
@@ -55,17 +53,15 @@
         background-color: #fcfdfe;
     }
 
-    /* Badge Custom */
     .badge-status {
         background-color: #e0f2fe;
-        color: #0284c7;
+        color: #02c709ff;
         padding: 6px 12px;
         border-radius: 8px;
         font-size: 0.75rem;
         font-weight: 600;
     }
 
-    /* Tombol Hapus Soft */
     .btn-delete {
         width: 35px;
         height: 35px;

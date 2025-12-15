@@ -4,9 +4,7 @@
 
 @section('content')
 <style>
-    /* --- TEMA NAVY & CLEAN (Konsisten) --- */
     
-    /* 1. Card Form */
     .card-form {
         border: none;
         border-radius: 16px;
@@ -14,7 +12,6 @@
         background-color: #fff;
     }
 
-    /* 2. Inputs */
     .form-label {
         color: #1e3a56;
         font-weight: 600;
@@ -37,7 +34,6 @@
         box-shadow: 0 0 0 4px rgba(30, 58, 86, 0.1);
     }
 
-    /* 3. Tabel Input Barang */
     .table-input thead th {
         background-color: #f1f5f9;
         color: #64748b;
@@ -55,7 +51,6 @@
         border-bottom: 1px solid #f1f5f9;
     }
 
-    /* 4. Buttons */
     .btn-save {
         background-color: #1e3a56;
         color: white;
@@ -208,21 +203,17 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        // Saat tombol "Tambah Barang Lain" diklik
         $("#addRow").click(function() {
             var newRow = $("#tabelBarang tbody tr:first").clone();
             
-            // Reset Nilai
             newRow.find("input").val(""); 
             newRow.find("select").val("");
             
-            // Aktifkan tombol hapus
             newRow.find(".remove-row").prop("disabled", false);
             
             $("#tabelBarang tbody").append(newRow);
         });
 
-        // Saat tombol "X" diklik
         $(document).on('click', '.remove-row', function() {
             $(this).closest('tr').remove();
         });

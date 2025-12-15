@@ -9,13 +9,8 @@ class Pelanggan extends Model
 {
     use HasFactory;
 
-    // 1. Beritahu nama tabel yang benar
     protected $table = 'pelanggan';
-
-    // 2. Beritahu Primary Key
     protected $primaryKey = 'Id_pelanggan';
-
-    // 3. Kolom yang boleh diisi
     protected $fillable = [
         'Nama_pelanggan',
         'Alamat',

@@ -4,20 +4,17 @@
 
 @section('content')
 <style>
-    /* --- TEMA NAVY & CLEAN (FIXED) --- */
     :root {
         --color-navy: #1e3a56;
         --color-navy-light: #2c537a;
         --color-gray-soft: #7b8ca0;
         
-        /* Warna Status Modern (Pastel) */
         --status-success-bg: #e8f5e9; --status-success-text: #2e7d32;
         --status-info-bg: #e3f2fd;    --status-info-text: #1565c0;
         --status-danger-bg: #ffebee;  --status-danger-text: #c62828;
         --status-neutral-bg: #f1f5f9; --status-neutral-text: #475569;
     }
 
-    /* 1. Welcome Header */
     .dashboard-header {
         background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
         color: white;
@@ -40,7 +37,6 @@
         border-radius: 50%;
     }
 
-    /* 2. Kartu Modern */
     .card-modern {
         border: none;
         border-radius: 16px;
@@ -57,7 +53,6 @@
         box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     }
 
-    /* Header Kartu */
     .card-header-clean {
         padding: 20px 25px;
         border-bottom: 1px solid #f1f5f9;
@@ -84,7 +79,6 @@
         margin: 0;
     }
 
-    /* 3. Tabel Modern */
     .table-modern thead th {
         background-color: #f8f9fa;
         color: var(--color-gray-soft);
@@ -106,7 +100,6 @@
     
     .table-modern tbody tr:last-child td { border-bottom: none; }
 
-    /* 4. Tombol Aksi */
     .btn-action-custom {
         border-radius: 10px;
         padding: 10px 20px;
@@ -119,7 +112,6 @@
         text-align: center;
     }
 
-    /* Definisi Warna Navy yang Hilang di Kode Sebelumnya */
     .btn-navy {
         background-color: var(--color-navy);
         color: white;
@@ -130,7 +122,6 @@
         box-shadow: 0 4px 15px rgba(30, 58, 86, 0.3);
     }
 
-    /* 5. KELAS STATUS BARU (FIXED FOR PARSING ERROR) */
     .status-badge {
         padding: 6px 12px;
         border-radius: 8px;

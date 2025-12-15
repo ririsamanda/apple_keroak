@@ -17,11 +17,10 @@
             min-height: 100vh;
         }
 
-        /* --- 1. SIDEBAR PROFESSIONAL (Fixed & Scrollable) --- */
         .sidebar {
             width: 280px;
-            background-color: #0f172a; /* Dark Navy Premium */
-            height: 100vh; /* PENTING: Gunakan height fix agar bisa di-scroll */
+            background-color: #0f172a; 
+            height: 100vh;
             position: fixed;
             top: 0;
             left: 0;
@@ -34,13 +33,12 @@
             transition: all 0.3s;
         }
 
-        /* Profil User (Fixed di Atas) */
         .sidebar-profile {
             text-align: center;
             padding: 10px 0 20px 0;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             margin-bottom: 10px;
-            flex-shrink: 0; /* Agar tidak mengecil saat menu di-scroll */
+            flex-shrink: 0; 
         }
 
         .profile-img {
@@ -67,16 +65,14 @@
         .user-name { font-weight: 600; font-size: 1rem; color: #fff; }
         .user-role { font-size: 0.75rem; color: #64748b; background: rgba(255,255,255,0.05); padding: 2px 10px; border-radius: 20px; }
 
-        /* --- AREA MENU SCROLLABLE --- */
         .sidebar-menu {
-            flex-grow: 1; /* Mengisi sisa ruang kosong */
-            overflow-y: auto; /* Aktifkan scroll vertikal */
-            overflow-x: hidden; /* Sembunyikan scroll horizontal */
-            padding-right: 5px; /* Jarak agar scrollbar tidak nempel */
-            margin-right: -10px; /* Trik agar scrollbar agak ke kanan */
+            flex-grow: 1;
+            overflow-y: auto; 
+            overflow-x: hidden; 
+            padding-right: 5px; 
+            margin-right: -10px;
         }
 
-        /* Custom Scrollbar (Agar terlihat rapi) */
         .sidebar-menu::-webkit-scrollbar {
             width: 4px;
         }
@@ -91,7 +87,6 @@
             background: rgba(255, 255, 255, 0.4);
         }
 
-        /* Label Kategori Menu */
         .menu-label {
             font-size: 0.7rem;
             text-transform: uppercase;
@@ -99,11 +94,10 @@
             font-weight: 700;
             letter-spacing: 0.5px;
             margin-bottom: 10px;
-            margin-top: 15px; /* Tambah jarak antar kategori */
+            margin-top: 15px;
             padding-left: 15px;
         }
 
-        /* Link Menu */
         .sidebar-link {
             display: flex;
             align-items: center;
@@ -130,7 +124,6 @@
             transform: translateX(5px);
         }
 
-        /* ACTIVE STATE */
         .sidebar-link.active {
             background-color: #ffffff;
             color: #0f172a;
@@ -139,11 +132,10 @@
         }
         .sidebar-link.active i { color: #0f172a; }
 
-        /* Tombol Logout (Fixed di Bawah) */
         .logout-container { 
             margin-top: auto; 
             padding-top: 20px;
-            flex-shrink: 0; /* Agar tidak ikut mengecil/hilang */
+            flex-shrink: 0;
         }
         
         .btn-logout-custom {
@@ -162,7 +154,6 @@
             box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
         }
 
-        /* --- 2. MAIN CONTENT --- */
         .main-wrapper {
             margin-left: 280px;
             padding: 30px;
@@ -186,64 +177,41 @@
     </style>
 </head>
 <body>
-
     <div class="sidebar">
-        
-        <!-- 1. Profil (Fixed) -->
         <div class="sidebar-profile">
             <div class="brand-text mb-3"><i class="bi bi-apple me-1"></i> APPLE KEROAK</div>
-            
             <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->Nama_karyawan) }}&background=334155&color=fff&size=128" 
                  class="profile-img" alt="User">
-            
             <div class="user-name">{{ Auth::user()->Nama_karyawan }}</div>
             <span class="user-role">Administrator</span>
         </div>
         
-        <!-- 2. Menu List (Scrollable) -->
         <div class="sidebar-menu">
-            
             <div class="menu-label" style="margin-top: 0;">Overview</div>
-            
             <a href="/admin/dashboard" class="sidebar-link {{ Request::is('admin/dashboard') ? 'active' : '' }}">
                 <i class="bi bi-grid-fill"></i>
                 <span>Dashboard</span>
             </a>
-
             <div class="menu-label">Master Data</div>
-
             <a href="/admin/karyawan" class="sidebar-link {{ Request::is('admin/karyawan*') ? 'active' : '' }}">
                 <i class="bi bi-people-fill"></i>
                 <span>Data Karyawan</span>
             </a>
-
             <a href="/admin/produk" class="sidebar-link {{ Request::is('admin/produk*') ? 'active' : '' }}">
                 <i class="bi bi-box-seam-fill"></i>
                 <span>Data Produk</span>
             </a>
-
             <a href="/admin/pelanggan" class="sidebar-link {{ Request::is('admin/pelanggan*') ? 'active' : '' }}">
                 <i class="bi bi-person-vcard-fill"></i>
                 <span>Data Pelanggan</span>
             </a>
-
             <div class="menu-label">Report</div>
-
             <a href="/admin/laporan" class="sidebar-link {{ Request::is('admin/laporan*') ? 'active' : '' }}">
                 <i class="bi bi-file-earmark-bar-graph-fill"></i>
                 <span>Laporan</span>
             </a>
-
-            <!-- Contoh Menu Tambahan untuk Test Scroll (Opsional) -->
-            <!-- 
-            <div class="menu-label">Settings</div>
-            <a href="#" class="sidebar-link"><i class="bi bi-gear-fill"></i> <span>Konfigurasi</span></a>
-            <a href="#" class="sidebar-link"><i class="bi bi-shield-lock-fill"></i> <span>Keamanan</span></a>
-            -->
-
         </div>
         
-        <!-- 3. Logout (Fixed) -->
         <div class="logout-container">
             <form action="/logout" method="post">
                 @csrf
@@ -254,9 +222,7 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
     <div class="main-wrapper">
-        
         <div class="top-header">
             <div>
                 <div class="page-heading">
@@ -271,7 +237,6 @@
         </div>
 
         @yield('content')
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

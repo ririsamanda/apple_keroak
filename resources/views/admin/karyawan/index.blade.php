@@ -4,9 +4,7 @@
 
 @section('content')
 <style>
-    /* --- CSS Tambahan Khusus Halaman Ini --- */
-    
-    /* Card Container */
+   
     .card-table {
         border: none;
         border-radius: 15px;
@@ -15,7 +13,6 @@
         overflow: hidden;
     }
 
-    /* Header Tabel Modern */
     .table-modern thead th {
         background-color: #f8f9fa;
         color: #7b8ca0;
@@ -27,7 +24,6 @@
         border-bottom: 2px solid #edf2f7;
     }
 
-    /* Body Tabel */
     .table-modern tbody td {
         padding: 15px;
         vertical-align: middle;
@@ -40,7 +36,6 @@
         background-color: #fcfdfe;
     }
 
-    /* Badge Role (Admin/Karyawan) */
     .badge-role {
         padding: 8px 12px;
         border-radius: 30px;
@@ -49,10 +44,9 @@
         display: inline-flex;
         align-items: center;
     }
-    .badge-admin { background-color: #ffebee; color: #c62828; } /* Merah Soft */
+    .badge-admin { background-color: #ffebee; color: #2832c6ff; } /* Merah Soft */
     .badge-karyawan { background-color: #e8f5e9; color: #2e7d32; } /* Hijau Soft */
 
-    /* Tombol Aksi (Edit/Hapus) */
     .btn-action {
         width: 38px;
         height: 38px;

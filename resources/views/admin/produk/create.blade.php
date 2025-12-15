@@ -4,7 +4,6 @@
 
 @section('content')
 <style>
-    /* Styling Form Modern (Sama dengan Tambah Karyawan) */
     .card-form {
         border: none;
         border-radius: 15px;
@@ -34,7 +33,6 @@
         box-shadow: 0 0 0 4px rgba(30, 58, 86, 0.1);
     }
 
-    /* Style khusus input group (Rp) */
     .input-group-text {
         background-color: #f1f5f9;
         border: 1px solid #e2e8f0;
@@ -43,7 +41,7 @@
     }
 
     .btn-save {
-        background-color: #1e3a56; /* Warna Navy (Create Mode) */
+        background-color: #1e3a56; 
         color: white;
         padding: 12px 30px;
         border-radius: 10px;

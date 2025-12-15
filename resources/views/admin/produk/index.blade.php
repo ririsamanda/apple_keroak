@@ -4,7 +4,6 @@
 
 @section('content')
 <style>
-    /* --- CSS Konsisten dengan Halaman Karyawan --- */
     
     .card-table {
         border: none;
@@ -14,7 +13,6 @@
         overflow: hidden;
     }
 
-    /* Header Tabel Modern */
     .table-modern thead th {
         background-color: #f8f9fa;
         color: #7b8ca0;
@@ -26,7 +24,6 @@
         border-bottom: 2px solid #edf2f7;
     }
 
-    /* Body Tabel */
     .table-modern tbody td {
         padding: 15px;
         vertical-align: middle;
@@ -39,7 +36,6 @@
         background-color: #fcfdfe;
     }
 
-    /* Badge Satuan (Pemanis Visual) */
     .badge-satuan {
         background-color: #e3f2fd;
         color: #1565c0;
@@ -50,7 +46,6 @@
         display: inline-block;
     }
 
-    /* Badge Stok (Baru) */
     .badge-stok-aman {
         background-color: #e8f5e9;
         color: #2e7d32;
@@ -69,7 +64,6 @@
         font-size: 0.85rem;
     }
 
-    /* Tombol Aksi (Edit/Hapus) */
     .btn-action {
         width: 38px;
         height: 38px;
@@ -88,7 +82,6 @@
     .btn-delete { background-color: #ffebee; color: #ef5350; }
     .btn-delete:hover { background-color: #ef5350; color: white; transform: translateY(-2px); }
     
-    /* Harga Style */
     .price-tag {
         font-weight: 600;
         color: #1e3a56;
@@ -145,7 +138,6 @@
                             </div>
                         </td>
 
-                        <!-- Menampilkan Kategori (handle nullable) -->
                         <td>{{ $data->Kategori ?? '-' }}</td>
                         
                         <td class="text-center">
@@ -156,7 +148,6 @@
                             <span class="price-tag">Rp {{ number_format($data->Harga, 0, ',', '.') }}</span>
                         </td>
 
-                        <!-- Menampilkan Stok -->
                         <td class="text-center">
                             @if($data->Stok <= 5)
                                 <span class="badge-stok-nipis">{{ $data->Stok }}</span>
@@ -166,7 +157,6 @@
                         </td>
 
                         <td class="text-center">
-                            <!-- Menggunakan Id_produk sesuai migration -->
                             <a href="{{ route('produk.edit', $data->Id_produk) }}" class="btn-action btn-edit me-1" title="Edit Produk">
                                 <i class="bi bi-pencil-fill"></i>
                             </a>

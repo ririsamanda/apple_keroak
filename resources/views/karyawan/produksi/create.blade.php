@@ -4,7 +4,6 @@
 
 @section('content')
 <style>
-    /* --- TEMA NAVY & CLEAN (Konsisten) --- */
     
     .card-form {
         border: none;
@@ -35,9 +34,8 @@
         box-shadow: 0 0 0 4px rgba(30, 58, 86, 0.1);
     }
 
-    /* Button Styles */
     .btn-save {
-        background-color: #1e3a56; /* Warna Navy Solid */
+        background-color: #1e3a56; 
         color: white;
         padding: 12px 30px;
         border-radius: 10px;

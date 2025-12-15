@@ -4,8 +4,6 @@
 
 @section('content')
 <style>
-    /* --- CSS Konsisten dengan Halaman Lain --- */
-    
     .card-table {
         border: none;
         border-radius: 15px;
@@ -14,7 +12,6 @@
         overflow: hidden;
     }
 
-    /* Header Tabel Modern */
     .table-modern thead th {
         background-color: #f8f9fa;
         color: #7b8ca0;
@@ -26,7 +23,6 @@
         border-bottom: 2px solid #edf2f7;
     }
 
-    /* Body Tabel */
     .table-modern tbody td {
         padding: 15px;
         vertical-align: middle;
@@ -39,7 +35,6 @@
         background-color: #fcfdfe;
     }
 
-    /* Tombol Aksi (Edit/Hapus) */
     .btn-action {
         width: 38px;
         height: 38px;

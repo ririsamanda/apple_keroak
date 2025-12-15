@@ -4,7 +4,6 @@
 
 @section('content')
 <style>
-    /* Styling Konsisten dengan Edit Karyawan */
     .card-form {
         border: none;
         border-radius: 15px;
@@ -42,7 +41,7 @@
     }
 
     .btn-save {
-        background-color: #f9a825; /* Warna Kuning/Orange (Edit Mode) */
+        background-color: #f9a825; 
         color: white;
         padding: 12px 30px;
         border-radius: 10px;

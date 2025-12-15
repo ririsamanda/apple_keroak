@@ -10,9 +10,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // ==========================================
-        // 1. ISI TABEL HAK AKSES 
-        // ==========================================
+    
         DB::table('hak_akses')->updateOrInsert(
             ['Id_hakakses' => 1],
             ['Nama_hakakses' => 'Admin']
@@ -23,24 +21,18 @@ class DatabaseSeeder extends Seeder
             ['Nama_hakakses' => 'Karyawan']
         );
 
-        // ==========================================
-        // 2. ISI TABEL KARYAWAN (5 DATA)
-        // ==========================================
-        
-        // --- DATA 1: Super Admin (Admin) ---
         DB::table('karyawan')->updateOrInsert(
-            ['Username' => 'admin'], // Kunci unik
+            ['Username' => 'admin'], 
             [
-                'Nama_karyawan' => 'Pak Haris (Chief Admin',
+                'Nama_karyawan' => 'Pak Haris (Chief Admin)',
                 'Password'      => Hash::make('password'), 
-                'Id_hakakses'   => 1, // Admin
+                'Id_hakakses'   => 1, 
                 'Jabatan'       => 'Plant Manager',
                 'created_at'    => now(),
                 'updated_at'    => now(),
             ]
         );
         
-        // --- DATA 2: aulia (Admin) ---
         DB::table('karyawan')->updateOrInsert(
             ['Username' => 'aulia'], 
             [
@@ -53,50 +45,42 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // --- DATA 3: Joko Supervisor (Admin) ---
         DB::table('karyawan')->updateOrInsert(
             ['Username' => 'joko'], 
             [
                 'Nama_karyawan' => 'Joko Santoso',
                 'Password'      => Hash::make('password'),
-                'Id_hakakses'   => 1, // Admin
+                'Id_hakakses'   => 1, 
                 'Jabatan'       => 'Supervisor Logistik',
                 'created_at'    => now(),
                 'updated_at'    => now(),
             ]
         );
 
-        // --- DATA 4: Budi Operator (Karyawan) ---
         DB::table('karyawan')->updateOrInsert(
             ['Username' => 'budi'], 
             [
                 'Nama_karyawan' => 'Budi Operator',
                 'Password'      => Hash::make('password'),
-                'Id_hakakses'   => 2, // Karyawan
+                'Id_hakakses'   => 2, 
                 'Jabatan'       => 'Operator Perakitan',
                 'created_at'    => now(),
                 'updated_at'    => now(),
             ]
         );
 
-        // --- DATA 5: Siti Staff (Karyawan) ---
         DB::table('karyawan')->updateOrInsert(
             ['Username' => 'siti'], 
             [
                 'Nama_karyawan' => 'Siti Aminah',
                 'Password'      => Hash::make('password'),
-                'Id_hakakses'   => 2, // Karyawan
+                'Id_hakakses'   => 2, 
                 'Jabatan'       => 'Staff Gudang Komponen',
                 'created_at'    => now(),
                 'updated_at'    => now(),
             ]
         );
 
-        // ==========================================
-        // 3. ISI TABEL PRODUK (LENGKAP DENGAN STOK)
-        // ==========================================
-        
-        // Produk 1: phone x
         DB::table('produk')->updateOrInsert(
             ['Id_produk' => 1], 
             [
@@ -110,7 +94,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Produk 2: Laptop
         DB::table('produk')->updateOrInsert(
             ['Id_produk' => 2], 
             [
@@ -124,7 +107,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Produk 3: air head
         DB::table('produk')->updateOrInsert(
             ['Id_produk' => 3], 
             [
@@ -138,7 +120,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Produk 4: watch pro
         DB::table('produk')->updateOrInsert(
             ['Id_produk' => 4], 
             [
@@ -152,7 +133,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Produk 5: tablet
         DB::table('produk')->updateOrInsert(
             ['Id_produk' => 5], 
             [
@@ -166,12 +146,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // ==========================================
-        // 4. ISI TABEL PELANGGAN (DATA BARU)
-        // ==========================================
-        // Acuan: Id_pelanggan
         
-        // Pelanggan 1 
         DB::table('pelanggan')->updateOrInsert(
             ['Id_pelanggan' => 1], 
             [
@@ -183,7 +158,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Pelanggan 2 
         DB::table('pelanggan')->updateOrInsert(
             ['Id_pelanggan' => 2], 
             [
@@ -195,7 +169,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Pelanggan 3 
         DB::table('pelanggan')->updateOrInsert(
             ['Id_pelanggan' => 3], 
             [
@@ -207,7 +180,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Pelanggan 4 
         DB::table('pelanggan')->updateOrInsert(
             ['Id_pelanggan' => 4], 
             [
@@ -219,7 +191,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Pelanggan 5 
         DB::table('pelanggan')->updateOrInsert(
             ['Id_pelanggan' => 5], 
             [
@@ -230,10 +201,6 @@ class DatabaseSeeder extends Seeder
                 'updated_at'     => now(),
             ]
         );
-
-        // ==========================================
-        // 4. PRODUKSI / QC (Quality Control Barang Masuk)
-        // ==========================================
         
         DB::table('produksi')->updateOrInsert(
             ['Id_produksi' => 1],
@@ -259,10 +226,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // ==========================================
-        // 5. PENGIRIMAN (DISTRIBUSI KE KLIEN)
-        // ==========================================
-
         DB::table('pengiriman')->updateOrInsert(
             ['Id_pengiriman' => 1],
             [
@@ -285,9 +248,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // ==========================================
-        // 6. DETAIL PENGIRIMAN
-        // ==========================================
 
         DB::table('detail_pengiriman')->updateOrInsert(
             ['Id_detail' => 1],

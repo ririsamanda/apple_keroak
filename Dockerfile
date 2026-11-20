@@ -1,9 +1,9 @@
 FROM php:8.2-cli
 
-# Install ekstensi PHP yang dibutuhkan Laravel 12 & Node.js untuk Vite/Tailwind
+# Install ekstensi PHP (termasuk pdo_pgsql) & Node.js untuk Vite/Tailwind
 RUN apt-get update && apt-get install -y \
-    git unzip libzip-dev libpng-dev libonig-dev libxml2-dev curl \
-    && docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath gd \
+    git unzip libzip-dev libpng-dev libonig-dev libxml2-dev libpq-dev curl \
+    && docker-php-ext-install pdo_pgsql mbstring zip exif pcntl bcmath gd \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs
 
@@ -17,5 +17,5 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader
 RUN npm install && npm run build
 
-# Jalankan migrasi & nyalakan server menggunakan variabel $PORT dari Railway
-CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+# Jalankan migrasi + seeder otomatis & nyalakan server
+CMD php artisan migrate --seed --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}

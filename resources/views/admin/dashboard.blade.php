@@ -40,10 +40,8 @@
 </style>
 
 <div class="container-fluid p-0">
-    
     <input type="hidden" id="chartLabelsData" value="{{ json_encode($chartLabels ?? []) }}">
     <input type="hidden" id="chartDataValues" value="{{ json_encode($chartData ?? []) }}">
-    
     <div class="dashboard-header d-flex justify-content-between align-items-center">
         <div>
             <h2 class="fw-bold mb-1">Selamat Datang, Admin!</h2>

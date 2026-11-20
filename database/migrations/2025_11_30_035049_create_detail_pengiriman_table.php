@@ -10,13 +10,10 @@ return new class extends Migration
     {
     Schema::create('detail_pengiriman', function (Blueprint $table) {
         $table->id('Id_detail'); 
-
         $table->foreignId('Id_pengiriman')
               ->constrained('pengiriman', 'Id_pengiriman')
               ->onDelete('cascade');
-
         $table->foreignId('Id_produk')->constrained('produk', 'Id_produk');
-
         $table->integer('Jumlah_kirim');
         $table->text('keterangan')->nullable();
         $table->timestamps();

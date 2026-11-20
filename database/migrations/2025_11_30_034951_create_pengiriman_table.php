@@ -10,15 +10,10 @@ return new class extends Migration
     {
     Schema::create('pengiriman', function (Blueprint $table) {
         $table->id('Id_pengiriman');
-
         $table->foreignId('Id_pelanggan')->constrained('pelanggan', 'Id_pelanggan');
-
         $table->date('Tanggal_kirim');
-
         $table->foreignId('Id_karyawan')->constrained('karyawan', 'Id_karyawan');
-
         $table->enum('Status_pengiriman', ['Dikirim', 'Selesai']);
-
         $table->timestamps();
     });
     }

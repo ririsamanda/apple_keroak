@@ -10,14 +10,10 @@ return new class extends Migration
     {
     Schema::create('produksi', function (Blueprint $table) {
         $table->id('Id_produksi');
-
         $table->foreignId('Id_produk')->constrained('produk', 'Id_produk');
-
         $table->integer('Jumlah_selesai');
         $table->date('Tanggal_produksi');
-
         $table->foreignId('Id_karyawan')->constrained('karyawan', 'Id_karyawan');
-
         $table->text('keterangan')->nullable(); 
         $table->timestamps();
     });

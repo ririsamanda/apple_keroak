@@ -13,9 +13,7 @@ return new class extends Migration
         $table->string('Nama_karyawan', 100);
         $table->string('Username', 50)->unique();
         $table->string('Password', 255);
-
         $table->foreignId('Id_hakakses')->constrained('hak_akses', 'Id_hakakses');
-
         $table->string('Jabatan', 100);
         $table->timestamps();
     });
